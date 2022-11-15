@@ -12,15 +12,52 @@
 </head>
 
 <body>
-    <div id="app"></div>
+    <!-- JavaScript -->
+    <div id="app-javascript">
+        <p>Total: <span id="total"></span></p>
+        <p>Price: $ <span id="price"></span></p>
+        <button id="button">Buy</button>
+    </div>
+
+    <script type="application/javascript">
+        const button = document.getElementById('button');
+        const total = document.getElementById('total');
+        const price = document.getElementById('price');
+
+        let counter = 1;
+
+        function attValues(counter) {
+            total.innerText = counter;
+            price.innerText = counter * 250;
+        }
+        attValues(counter);
+
+        function handleClick() {
+            counter = counter + 1;
+            attValues(counter);
+        }
+
+        button.addEventListener('click', handleClick);
+    </script>
+
+
+    <!-- React -->
+    <div id="app-react"></div>
 
     <script type="text/babel">
+        const Buy = () => {
+            const [counter, setCounter] = React.useState(1);
 
-        function App() {
-            return <div>My App</div>
-        }
-        ReactDOM.render(<App />, document.getElementById("app"));
+            return (
+                <div>
+                    <p>Total: {counter}</p>
+                    <p>Price: $ {counter * 250}</p>
+                    <button onClick={() => setCounter(counter + 1)}>Comprar</button>
+                </div>
+            );
+        };
 
+        ReactDOM.render(<Buy />, document.getElementById('app-react'));
     </script>
 </body>
 
